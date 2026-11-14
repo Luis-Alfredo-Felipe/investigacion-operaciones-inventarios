@@ -1,0 +1,682 @@
+/* ==========================================================================
+   INTERFAZ OFICIAL DE MICROSOFT EXCEL 365 (VERDE CORPORATIVO Y GRISES OFFICE)
+   ========================================================================== */
+:root {
+  --excel-dark: #185C37;          /* Verde oscuro corporativo de Excel */
+  --excel-main: #107C41;          /* Verde principal de Microsoft Excel 365 */
+  --excel-mid: #21A366;           /* Verde medio de acento e íconos */
+  --excel-soft-tint: #E6F4EA;     /* Fondo verde suave para encabezados de tabla */
+  --excel-good-fill: #C6EFCE;     /* Verde clásico de Formato Condicional Excel */
+  --excel-good-text: #006100;     /* Texto verde oscuro para celdas de resultado */
+  --excel-input-bg: #EDF4FC;      /* Azul tenue clásico para celdas de entrada */
+  --ribbon-bg: #F3F2F1;           /* Gris claro oficial de barra de herramientas Office */
+  --grid-header-bg: #F3F2F1;      /* Encabezados de fila (1,2,3) y columna (A,B,C) */
+  --grid-border: #D4D4D4;         /* Líneas de cuadrícula estándar de Excel */
+  --cell-bg: #FFFFFF;             /* Blanco puro de hoja de cálculo */
+  --text-main: #201F1E;
+  --text-muted: #605E5C;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--cell-bg);
+  color: var(--text-main);
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0; /* Eliminamos el margen exterior para ocupar toda la pantalla */
+  overflow: hidden;
+}
+
+/* CONTENEDOR DE VENTANA DE EXCEL A PANTALLA COMPLETA */
+.excel-window {
+  width: 100%;
+  max-width: none; /* Quitamos el límite de 1560px para aprovechar todo el monitor */
+  height: 100vh;   /* Ocupa el 100% del alto disponible */
+  background-color: var(--cell-bg);
+  border-radius: 0; /* Sin bordes redondeados para verse como app maximizada */
+  border: none;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* 1. BARRA DE TÍTULO SUPERIOR VERDE EXCEL */
+.excel-titlebar {
+  background-color: var(--excel-main);
+  color: #FFFFFF;
+  padding: 7px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.78rem;
+}
+
+.titlebar-left, .titlebar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.excel-app-icon {
+  background-color: #FFFFFF;
+  color: var(--excel-main);
+  font-weight: 900;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.82rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.autosave-pill {
+  background-color: rgba(255, 255, 255, 0.16);
+  color: #E6F4EA;
+  padding: 2px 9px;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.doc-title {
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.user-badge {
+  background-color: var(--excel-dark);
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+.win-controls span {
+  display: inline-block;
+  padding: 0 7px;
+  cursor: default;
+  opacity: 0.9;
+}
+
+/* 2. CINTA DE OPCIONES (RIBBON) */
+.excel-ribbon {
+  background-color: var(--ribbon-bg);
+  border-bottom: 1px solid var(--grid-border);
+}
+
+.ribbon-tabs {
+  background-color: var(--excel-main);
+  display: flex;
+  gap: 4px;
+  padding: 4px 12px 0 12px;
+  font-size: 0.75rem;
+}
+
+.r-tab {
+  color: #E6F4EA;
+  padding: 5px 14px;
+  border-radius: 5px 5px 0 0;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.r-tab.file-tab {
+  background-color: var(--excel-dark);
+  color: #FFFFFF;
+  font-weight: 800;
+  margin-right: 6px;
+}
+
+.r-tab.active {
+  background-color: var(--ribbon-bg);
+  color: var(--excel-main);
+  font-weight: 800;
+}
+
+.ribbon-toolbar {
+  padding: 6px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.74rem;
+  flex-wrap: wrap;
+}
+
+.tool-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tool-btn {
+  background-color: #FFFFFF;
+  border: 1px solid var(--grid-border);
+  padding: 3px 9px;
+  border-radius: 4px;
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.highlight-tool {
+  background-color: var(--excel-soft-tint);
+  border-color: var(--excel-mid);
+  color: var(--excel-dark);
+  font-weight: 800;
+}
+
+.tool-divider {
+  width: 1px;
+  height: 20px;
+  background-color: var(--grid-border);
+}
+
+.tool-note {
+  color: var(--excel-dark);
+  font-size: 0.73rem;
+}
+
+/* 3. BARRA DE FÓRMULAS (FX) */
+.excel-formulabar {
+  display: flex;
+  align-items: center;
+  background-color: #FAF9F8;
+  border-bottom: 1px solid var(--grid-border);
+  padding: 4px 10px;
+  gap: 8px;
+}
+
+.name-box {
+  width: 68px;
+  background-color: #FFFFFF;
+  border: 1px solid var(--grid-border);
+  padding: 3px 8px;
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--excel-dark);
+  border-radius: 3px;
+}
+
+.fx-buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 6px;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  user-select: none;
+}
+
+.fx-check {
+  color: var(--excel-main);
+  font-weight: 800;
+}
+
+.fx-icon {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-weight: 900;
+  color: var(--excel-dark);
+  font-size: 0.92rem;
+}
+
+.formula-input {
+  flex: 1;
+  max-width: 440px;
+  border: 1px solid var(--grid-border);
+  background-color: #FFFFFF;
+  padding: 4px 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--excel-dark);
+  border-radius: 3px;
+  outline: none;
+}
+
+.formula-comment {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--excel-dark);
+  background-color: var(--excel-soft-tint);
+  border: 1px solid #B7E1CD;
+  padding: 3px 10px;
+  border-radius: 4px;
+}
+
+/* 4. CUADRÍCULA PRINCIPAL DE EXCEL (SPREADSHEET) */
+.spreadsheet-viewport {
+  flex: 1;
+  overflow: auto;
+  background-color: #FFFFFF;
+}
+
+.hidden-sheet {
+  display: none !important;
+}
+
+.excel-grid {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 0.76rem;
+}
+
+/* Anchos de columnas de Excel */
+.excel-grid th.corner-header { width: 34px; color: #A19F9D; }
+.excel-grid th.col-a { width: 16px; }
+.excel-grid th.col-b { width: 17%; }
+.excel-grid th.col-c { width: 8.5%; }
+.excel-grid th.col-d { width: 9.5%; }
+.excel-grid th.col-e { width: 16%; }
+.excel-grid th.col-f { width: 15.5%; }
+.excel-grid th.col-g { width: 8.5%; }
+.excel-grid th.col-h { width: 12.5%; }
+.excel-grid th.col-i { width: 11.5%; }
+
+.excel-grid thead th {
+  background-color: var(--grid-header-bg);
+  border: 1px solid var(--grid-border);
+  color: var(--text-main);
+  font-weight: 700;
+  font-size: 0.72rem;
+  padding: 4px 0;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.excel-grid td {
+  border: 1px solid #E1DFDD;
+  padding: 5px 8px;
+  vertical-align: middle;
+  background-color: var(--cell-bg);
+}
+
+.excel-grid td.row-header {
+  background-color: var(--grid-header-bg);
+  border: 1px solid var(--grid-border);
+  text-align: center;
+  font-weight: 700;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  padding: 2px;
+  user-select: none;
+}
+
+/* CELDAS COMBINADAS DE ENCABEZADO E HISTORIA */
+.cell-banner-title {
+  background: linear-gradient(90deg, var(--excel-dark) 0%, var(--excel-main) 100%) !important;
+  color: #FFFFFF;
+  padding: 10px 16px !important;
+}
+
+.banner-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.badge-excel {
+  display: inline-block;
+  background-color: #C6EFCE;
+  color: #004B1C;
+  font-size: 0.66rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 3px;
+  margin-bottom: 4px;
+}
+
+.cell-banner-title h1 {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #FFFFFF;
+}
+
+.banner-logos {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-card, .product-card {
+  background-color: #FFFFFF;
+  border: 2px solid #B7E1CD;
+  border-radius: 6px;
+  padding: 4px 10px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-card img, .product-card img {
+  max-height: 38px;
+  width: auto;
+  object-fit: contain;
+}
+
+.cell-label-merged {
+  background-color: var(--excel-soft-tint) !important;
+  font-weight: 800;
+  color: var(--excel-dark);
+  text-align: right;
+  padding-right: 12px !important;
+}
+
+.cell-text-block {
+  background-color: #FAF9F8 !important;
+  line-height: 1.42;
+  color: var(--text-main);
+}
+
+.cell-statement-block {
+  background-color: #F4FAF6 !important;
+  border-left: 4px solid var(--excel-main) !important;
+  line-height: 1.42;
+}
+
+/* ENCABEZADOS DE TABLAS EN LA HOJA */
+.section-header-dark {
+  background-color: var(--excel-dark) !important;
+  color: #FFFFFF;
+  font-weight: 800;
+  font-size: 0.74rem;
+  letter-spacing: 0.3px;
+  padding: 6px 10px !important;
+}
+
+.section-header-green {
+  background-color: var(--excel-main) !important;
+  color: #FFFFFF;
+  font-weight: 800;
+  font-size: 0.74rem;
+  letter-spacing: 0.3px;
+  padding: 6px 10px !important;
+}
+
+.th-cell {
+  background-color: #D3EFE0 !important;
+  color: var(--excel-dark);
+  font-weight: 800;
+  font-size: 0.72rem;
+}
+
+.th-cell.center, .td-center {
+  text-align: center;
+}
+
+.td-label {
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.td-input {
+  background-color: var(--excel-input-bg) !important;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  text-align: center;
+  color: #0F4C81;
+}
+
+.td-output {
+  background-color: var(--excel-soft-tint) !important;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 800;
+  font-size: 0.84rem;
+  text-align: center;
+  color: var(--excel-good-text);
+}
+
+.td-output.highlight-total {
+  background-color: var(--excel-good-fill) !important;
+  color: var(--excel-good-text);
+  border: 1.5px solid var(--excel-mid) !important;
+}
+
+.td-unit {
+  color: var(--text-muted);
+  font-size: 0.72rem;
+}
+
+.td-source {
+  font-size: 0.71rem;
+  color: var(--text-muted);
+}
+
+.td-source a {
+  color: var(--excel-main);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.td-source a:hover {
+  text-decoration: underline;
+}
+
+.td-formula-code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--excel-dark);
+  background-color: #F8F9FA !important;
+  font-weight: 700;
+}
+
+.td-math {
+  text-align: center;
+  background-color: #FFFFFF !important;
+  padding: 4px 6px !important;
+  color: #1B1A19;
+}
+
+.td-math .katex {
+  font-size: 0.92rem;
+}
+
+.td-math .katex-display {
+  margin: 0 !important;
+}
+
+/* SELECCIÓN DE CELDA ESTILO EXCEL OFICIAL */
+.selectable-cell {
+  cursor: cell;
+  position: relative;
+}
+
+.selectable-cell:hover {
+  outline: 1.5px dashed var(--excel-mid);
+}
+
+.selected-cell {
+  outline: 2.5px solid var(--excel-main) !important;
+  z-index: 4;
+}
+
+.selected-cell::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-color: var(--excel-main);
+  right: -4px;
+  bottom: -4px;
+}
+
+/* FILA ÓPTIMA DE LA TABLA DE SENSIBILIDAD */
+.optimal-excel-row td {
+  background-color: var(--excel-good-fill) !important;
+  color: var(--excel-good-text);
+}
+
+/* CONTENEDOR DE GRÁFICO FLOTANTE DE EXCEL */
+.chart-host-cell {
+  background-color: #F8FAF9 !important;
+  padding: 8px !important;
+}
+
+.excel-chart-object {
+  background-color: #FFFFFF;
+  border: 1.5px solid #B7E1CD;
+  border-radius: 4px;
+  padding: 8px 12px;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(16, 124, 65, 0.08);
+}
+
+.chart-handle {
+  width: 7px;
+  height: 7px;
+  background-color: #FFFFFF;
+  border: 1.5px solid var(--excel-main);
+  position: absolute;
+}
+.chart-handle.tl { top: -4px; left: -4px; }
+.chart-handle.tr { top: -4px; right: -4px; }
+.chart-handle.bl { bottom: -4px; left: -4px; }
+.chart-handle.br { bottom: -4px; right: -4px; }
+
+.excel-chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #E1DFDD;
+  padding-bottom: 4px;
+  margin-bottom: 4px;
+  font-size: 0.72rem;
+}
+
+.excel-chart-header span {
+  color: var(--excel-dark);
+  font-weight: 800;
+}
+
+canvas {
+  width: 100%;
+  display: block;
+}
+
+/* 5. HOJA 2 PLACEHOLDER */
+.sheet2-placeholder {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FAF9F8;
+}
+
+.excel-modal-card {
+  max-width: 540px;
+  background-color: #FFFFFF;
+  border: 2px solid var(--excel-mid);
+  border-radius: 8px;
+  padding: 28px;
+  text-align: center;
+  box-shadow: 0 12px 30px rgba(16, 124, 65, 0.12);
+}
+
+.excel-modal-card h2 {
+  margin: 10px 0;
+  color: var(--excel-dark);
+}
+
+.excel-modal-card p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin-bottom: 18px;
+}
+
+.btn-return-sheet1 {
+  background-color: var(--excel-main);
+  color: #FFFFFF;
+  border: none;
+  padding: 9px 18px;
+  border-radius: 5px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-return-sheet1:hover {
+  background-color: var(--excel-dark);
+}
+
+/* 6. BARRA DE ESTADO Y PESTAÑAS DE HOJAS (FOOTER) */
+.excel-statusbar {
+  background-color: var(--ribbon-bg);
+  border-top: 1px solid var(--grid-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 12px;
+  height: 34px;
+  font-size: 0.73rem;
+}
+
+.sheet-tabs-container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  gap: 4px;
+}
+
+.sheet-nav-arrows {
+  color: var(--text-muted);
+  padding-right: 8px;
+  font-size: 0.7rem;
+}
+
+.sheet-tab {
+  height: 28px;
+  border: 1px solid var(--grid-border);
+  border-top: none;
+  background-color: #E1DFDD;
+  color: var(--text-muted);
+  padding: 0 14px;
+  font-family: inherit;
+  font-size: 0.73rem;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 0 0 4px 4px;
+}
+
+.sheet-tab.active {
+  background-color: #FFFFFF;
+  color: var(--excel-main);
+  border-bottom: 3px solid var(--excel-main);
+  font-weight: 800;
+}
+
+.add-sheet-btn {
+  padding: 0 8px;
+  font-size: 0.9rem;
+  color: var(--excel-main);
+  cursor: pointer;
+}
+
+.status-metrics {
+  display: flex;
+  gap: 16px;
+  color: var(--excel-dark);
+}
+
+/* Ajuste puntual para evitar desbordamiento en fórmulas largas de Excel */
+.td-formula-code {
+  font-size: 0.66rem !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

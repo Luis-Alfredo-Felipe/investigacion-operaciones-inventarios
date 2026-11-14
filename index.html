@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyecto_IO_Inventarios_Nestle.xlsx - Microsoft Excel</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Motor de ecuaciones matemáticas estilo Editor de Ecuaciones de Excel / PDF -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="excel-window">
+
+    <!-- 1. BARRA DE TÍTULO SUPERIOR DE EXCEL -->
+    <header class="excel-titlebar">
+      <div class="titlebar-left">
+        <span class="excel-app-icon">X</span>
+        <span class="autosave-pill">Autoguardado </span>
+        <span class="doc-title">Proyecto_IO_Inventarios_Modelos_EOQ.xlsx</span>
+      </div>
+      <div class="titlebar-right">
+        <span class="user-badge">Investigación de Operaciones | Ing. Erick Jimenez</span>
+        <div class="win-controls">
+          <span>—</span><span>▢</span><span class="close-btn">✕</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- 2. CINTA DE OPCIONES (RIBBON) -->
+    <nav class="excel-ribbon">
+      <div class="ribbon-tabs">
+        <span class="r-tab file-tab">Archivo</span>
+        <span class="r-tab active">Inicio</span>
+        <span class="r-tab">Insertar</span>
+        <span class="r-tab">Disposición de página</span>
+        <span class="r-tab">Fórmulas</span>
+        <span class="r-tab">Datos</span>
+        <span class="r-tab">Revisar</span>
+        <span class="r-tab">Vista</span>
+      </div>
+      <div class="ribbon-toolbar">
+        <div class="tool-group">
+          <span class="tool-btn">📋 Pegar</span>
+          <span class="tool-btn"><b>N</b> <i>K</i> <u>S</u></span>
+          <span class="tool-btn">Tema: Office Excel Clásico</span>
+        </div>
+        <div class="tool-divider"></div>
+        <div class="tool-group">
+          <span class="tool-btn">$ Español (Guatemala / USD)</span>
+          <span class="tool-btn">% Porcentual</span>
+          <span class="tool-btn">🔢 Estilo Millares</span>
+        </div>
+        <div class="tool-divider"></div>
+        <div class="tool-group">
+          <span class="tool-btn highlight-tool">∑ Autosuma</span>
+          <span class="tool-btn">📐 Biblioteca de Funciones (CEP)</span>
+          <span class="tool-note">Haz clic en cualquier celda para ver su fórmula exacta en la barra <b>fx</b></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- 3. BARRA DE FÓRMULAS INTERACTIVA (NAME BOX + FX) -->
+    <div class="excel-formulabar">
+      <div class="name-box" id="cellAddressBox">G8</div>
+      <div class="fx-buttons">
+        <span class="fx-cancel">✕</span>
+        <span class="fx-check">✓</span>
+        <span class="fx-icon">fx</span>
+      </div>
+      <input type="text" id="formulaInput" class="formula-input" value="=RAIZ((2*C10*C8*(C12+C11))/(C12*C11))" readonly>
+      <span class="formula-comment" id="formulaDesc">Tamaño óptimo de pedido con faltantes (Q*)</span>
+    </div>
+
+    <!-- 4. ÁREA DE CUADRÍCULA DE HOJA1: CEP CLÁSICO NESTLÉ (50%) -->
+    <div id="sheet-cep" class="spreadsheet-viewport active-sheet">
+      <table class="excel-grid">
+        <thead>
+          <tr>
+            <th class="corner-header">◢</th>
+            <th class="col-a">A</th>
+            <th class="col-b">B</th>
+            <th class="col-c">C</th>
+            <th class="col-d">D</th>
+            <th class="col-e">E</th>
+            <th class="col-f">F</th>
+            <th class="col-g">G</th>
+            <th class="col-h">H</th>
+            <th class="col-i">I</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="row-header">1</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td class="row-header">2</td>
+            <td></td>
+            <td colspan="8" class="cell-banner-title selectable-cell" data-cell="B2" data-formula="PROYECTO INVESTIGACIÓN DE OPERACIONES - MODELO DE CEP CLÁSICO (50%)" data-desc="Título general de la hoja de trabajo en Excel">
+              <div class="banner-flex">
+                <div>
+                  <span class="badge-excel">PLANTILLA DE MODELADO MATEMÁTICO</span>
+                  <h1>MODELO DE CANTIDAD ECONÓMICA DE PEDIDO (CEP CLÁSICO) — NESTLÉ S.A.</h1>
+                </div>
+                <div class="banner-logos">
+                  <div class="logo-card" title="Logotipo Oficial Nestlé">
+                    <img src="nestle.png" alt="Logo Nestlé">
+                  </div>
+                  <div class="product-card" title="Leche Nido 5 lbs (2.2 kg)">
+                    <img src="Nestle5lbs.jpg" alt="Leche Nido 5 lbs">
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="row-header">3</td>
+            <td></td>
+            <td class="cell-label-merged">Historia Corporativa:</td>
+            <td colspan="7" class="cell-text-block selectable-cell" data-cell="C3" data-formula="Reseña histórica de Nestlé S.A. (Suiza, 1866) y marca Nido (1944)" data-desc="Información histórica de la empresa y clasificación del inventario">
+              <strong>Nestlé S.A.</strong> fue fundada en <strong>1866 por Henri Nestlé</strong> en Vevey, Suiza, y lanzó en <strong>1944</strong> la marca <strong>Leche Nido</strong>. En Guatemala opera centros de distribución mayorista bajo <strong>sistema de conteo permanente (perpetuo)</strong> y control de lotes. <strong>Producto analizado:</strong> Leche en Polvo Nido Forticrece presentación lata/bolsa de <strong>5 lbs (2.2 kg)</strong> (Clasificación: <em>Inventario de mercancías / productos terminados</em> con demanda determinística y reabastecimiento instantáneo).
+            </td>
+          </tr>
+          <tr>
+            <td class="row-header">4</td>
+            <td></td>
+            <td class="cell-label-merged">Enunciado del Problema:</td>
+            <td colspan="7" class="cell-statement-block selectable-cell" data-cell="C4" data-formula="Planteamiento del caso de estudio CEP Clásico e interrogantes a demostrar" data-desc="Enunciado formal basado en datos reales de supermercados y literatura">
+              Un distribuidor mayorista en Guatemala comercializa <strong>Leche Nido de 5 lbs (2.2 kg)</strong> con una demanda constante de <strong>3,600 unidades/año</strong>. Cada unidad tiene un costo de compra de <strong>$24.00 USD (≈ Q186.00 GTQ)</strong>. Colocar cada pedido genera un costo administrativo fijo de <strong>$27.00 USD/orden (Co)</strong> y el costo de conservación anual (Cc) equivale al <strong>25% del valor del producto ($6.00 USD/unidad/año)</strong>. Si el tiempo de anticipación del proveedor es de <strong>5 días (L)</strong> (año comercial de 360 días), <strong>demuestre y calcule:</strong> <em>1) Tamaño óptimo de lote económico (Q*), 2) Número de órdenes por año (N), 3) Tiempo entre pedidos (T), 4) Punto de reorden (R) y 5) Costo total mínimo anual de inventario (CT*).</em>
+            </td>
+          </tr>
+          <tr>
+            <td class="row-header">5</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td class="row-header">6</td>
+            <td></td>
+            <td colspan="4" class="section-header-dark">1. TABLA DE VARIABLES DE ENTRADA Y FUENTES DE JUSTIFICACIÓN</td>
+            <td colspan="4" class="section-header-green">2. RESULTADOS DEMOSTRADOS CON FÓRMULAS DE EXCEL (CEP CLÁSICO)</td>
+          </tr>
+          <tr>
+            <td class="row-header">7</td>
+            <td></td>
+            <td class="th-cell">Variable / Parámetro (Símbolo)</td>
+            <td class="th-cell center">Valor (Celda)</td>
+            <td class="th-cell">Unidad de Medida</td>
+            <td class="th-cell">Fuente de Información / Justificación</td>
+            <td class="th-cell">Interrogante a Resolver</td>
+            <td class="th-cell center">Resultado</td>
+            <td class="th-cell">Fórmula en Excel</td>
+            <td class="th-cell">Fórmula Matemática</td>
+          </tr>
+          <tr>
+            <td class="row-header">8</td>
+            <td></td>
+            <td class="td-label">Demanda Anual Constante (<b>D</b>)</td>
+            <td class="td-input selectable-cell" data-cell="C8" data-formula="3600" data-desc="Demanda anual determinística: 300 latas/mes (10 latas/día)">3,600</td>
+            <td class="td-unit">unidades / año</td>
+            <td class="td-source">
+              Rotación mayorista (300/mes) • <a href="https://alicia.concytec.gob.pe/vufind/Record/UPLA_fa064cc692ee7d3db9bdb88dfdcdb761" target="_blank" rel="noopener">🔗 Tesis Repositorio EOQ</a>
+            </td>
+            <td class="td-label"><b>1. Tamaño del Lote Económico (Q*)</b></td>
+            <td class="td-output selected-cell selectable-cell" data-cell="G8" data-formula="=RAIZ((2*C10*C8)/C11)" data-desc="Tamaño óptimo de pedido que minimiza el costo total anual: 180 latas">180</td>
+            <td class="td-formula-code">=RAIZ((2*C10*C8)/C11)</td>
+            <td class="td-math">$$Q_o = \sqrt{\frac{2 \cdot D \cdot C_o}{C_c}}$$</td>
+          </tr>
+          <tr>
+            <td class="row-header">9</td>
+            <td></td>
+            <td class="td-label">Costo de Compra Unitario (<b>P</b>)</td>
+            <td class="td-input selectable-cell" data-cell="C9" data-formula="24.00" data-desc="Precio comercial en supermercados de Guatemala (≈ Q186.00 GTQ)">$24.00</td>
+            <td class="td-unit">USD / lata 5 lbs</td>
+            <td class="td-source">
+              Catálogo Supermercado GT | <a href="https://www.walmart.com.gt/leche-nido-1-mas-lata-2000gr-6/p" target="_blank" rel="noopener">🔗 Walmart GT</a> | <a href="https://www.latorre.com.gt/nido" target="_blank" rel="noopener">🔗 La Torre GT</a>
+            </td>
+            <td class="td-label"><b>2. Número de Órdenes al Año (N)</b></td>
+            <td class="td-output selectable-cell" data-cell="G9" data-formula="=C8/G8" data-desc="Cantidad de pedidos que deben colocarse al año: 3600 / 180 = 20 órdenes">20</td>
+            <td class="td-formula-code">=C8/G8</td>
+            <td class="td-math">$$N_o = \frac{D}{Q_o}$$</td>
+          </tr>
+          <tr>
+            <td class="row-header">10</td>
+            <td></td>
+            <td class="td-label">Costo de Ordenar o Pedido (<b>Co</b>)</td>
+            <td class="td-input selectable-cell" data-cell="C10" data-formula="27.00" data-desc="Costo administrativo fijo por preparar, emitir y recibir una orden">$27.00</td>
+            <td class="td-unit">USD / orden</td>
+            <td class="td-source">
+              Trámite compra y recepción | <a href="https://www.familynescam.com/marcas/nido" target="_blank" rel="noopener">🔗 Sitio Oficial Nido C.A.</a>
+            </td>
+            <td class="td-label"><b>3. Tiempo entre Pedidos (T)</b></td>
+            <td class="td-output selectable-cell" data-cell="G10" data-formula="=(G8/C8)*C13" data-desc="Ciclo de pedido en días: (180 / 3600) * 360 = 18 días (0.05 años)">18 días</td>
+            <td class="td-formula-code">=(G8/C8)*C13</td>
+            <td class="td-math">$$T = \frac{Q_o}{D}$$</td>
+          </tr>
+          <tr>
+            <td class="row-header">11</td>
+            <td></td>
+            <td class="td-label">Costo de Conservación Anual (<b>Cc</b>)</td>
+            <td class="td-input selectable-cell" data-cell="C11" data-formula="=C9*0.25" data-desc="25% anual sobre el costo unitario C9 ($24.00 * 25% = $6.00/unidad/año)">$6.00</td>
+            <td class="td-unit">USD / unid / año</td>
+            <td class="td-source">
+              Criterio 25% del valor anual (bodega, seguro, depreciación)
+            </td>
+            <td class="td-label"><b>4. Punto de Reorden (R)</b></td>
+            <td class="td-output selectable-cell" data-cell="G11" data-formula="=C12*(C8/C13)" data-desc="Nivel de inventario para emitir nuevo pedido: 5 días * 10 latas/día = 50 latas">50 unid.</td>
+            <td class="td-formula-code">=C12*(C8/C13)</td>
+            <td class="td-math">$$P.R. = \frac{D \cdot L}{\text{tiempo laboral}}$$</td>
+          </tr>
+          <tr>
+            <td class="row-header">12</td>
+            <td></td>
+            <td class="td-label">Tiempo de Entrega / Adelanto (<b>L</b>)</td>
+            <td class="td-input selectable-cell" data-cell="C12" data-formula="5" data-desc="Tiempo de anticipación entre colocación y recepción del pedido: 5 días">5</td>
+            <td class="td-unit">días hábiles</td>
+            <td class="td-source">
+              Lead time logístico estándar distribuidor local
+            </td>
+            <td class="td-label"><b>5. Costo Total Inventario (CT)</b></td>
+            <td class="td-output highlight-total selectable-cell" data-cell="G12" data-formula="=(C10*(C8/G8))+(C11*(G8/2))" data-desc="Suma de Costo Anual de Ordenar ($540) + Costo Anual de Mantener ($540)">$1,080.00</td>
+            <td class="td-formula-code">=(C10*(C8/G8))+(C11*(G8/2))</td>
+            <td class="td-math">$$CT = C_o\frac{D}{Q_o} + C_c\frac{Q_o}{2}$$</td>
+          </tr>
+          <tr>
+            <td class="row-header">13</td>
+            <td></td>
+            <td class="td-label">Horizonte de Tiempo Comercial</td>
+            <td class="td-input selectable-cell" data-cell="C13" data-formula="360" data-desc="Días comerciales del horizonte de control anual">360</td>
+            <td class="td-unit">días / año</td>
+            <td class="td-source">
+              Estándar contable y financiero anual
+            </td>
+            <td class="td-label"><b>Verificación Costo Mínimo (CT*)</b></td>
+            <td class="td-output highlight-total selectable-cell" data-cell="G13" data-formula="=RAIZ(2*C10*C11*C8)" data-desc="Comprobación mediante fórmula directa de Costo Mínimo Anual CT*">$1,080.00</td>
+            <td class="td-formula-code">=RAIZ(2*C10*C11*C8)</td>
+            <td class="td-math">$$CT^* = \sqrt{2 \cdot C_o \cdot C_c \cdot D}$$</td>
+          </tr>
+          <tr>
+            <td class="row-header">14</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td class="row-header">15</td>
+            <td></td>
+            <td colspan="4" class="section-header-dark">3. TABLA DE EVALUACIÓN DE COSTOS EN EXCEL (DEMOSTRACIÓN PUNTO ÓPTIMO Q* = 180)</td>
+            <td colspan="4" class="section-header-green">4. GRÁFICO DE EQUILIBRIO DE EXCEL: CURVAS DE COSTO CEP CLÁSICO</td>
+          </tr>
+          <tr>
+            <td class="row-header">16</td>
+            <td></td>
+            <td class="th-cell center">Tamaño Lote (Q)</td>
+            <td class="th-cell center">Costo Ordenar Anual<br><small>=C10*(C8/Q)</small></td>
+            <td class="th-cell center">Costo Mantener Anual<br><small>=C11*(Q/2)</small></td>
+            <td class="th-cell center">Costo Total Anual (CT)<br><small>=Ordenar + Mantener</small></td>
+            <td colspan="4" rowspan="6" class="chart-host-cell">
+              <div class="excel-chart-object">
+                <div class="chart-handle tl"></div>
+                <div class="chart-handle tr"></div>
+                <div class="chart-handle bl"></div>
+                <div class="chart-handle br"></div>
+                <div class="excel-chart-header">
+                  <strong>Gráfico 1: Equilibrio entre Costo de Ordenar y Costo de Conservación (Nestlé Nido)</strong>
+                  <span>Óptimo: Q* = 180 latas | CT* = $1,080.00 USD</span>
+                </div>
+                <canvas id="excelEoqCanvas" height="175"></canvas>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="row-header">17</td>
+            <td></td>
+            <td class="td-center">60 latas</td>
+            <td class="td-center selectable-cell" data-cell="C17" data-formula="=$C$10*($C$8/B17)" data-desc="Costo de ordenar con lote Q=60">$1,620.00</td>
+            <td class="td-center selectable-cell" data-cell="D17" data-formula="=$C$11*(B17/2)" data-desc="Costo de conservación con lote Q=60">$180.00</td>
+            <td class="td-center selectable-cell" data-cell="E17" data-formula="=SUMA(C17:D17)" data-desc="Costo total anual con lote Q=60">$1,800.00</td>
+          </tr>
+          <tr>
+            <td class="row-header">18</td>
+            <td></td>
+            <td class="td-center">120 latas</td>
+            <td class="td-center selectable-cell" data-cell="C18" data-formula="=$C$10*($C$8/B18)" data-desc="Costo de ordenar con lote Q=120">$810.00</td>
+            <td class="td-center selectable-cell" data-cell="D18" data-formula="=$C$11*(B18/2)" data-desc="Costo de conservación con lote Q=120">$360.00</td>
+            <td class="td-center selectable-cell" data-cell="E18" data-formula="=SUMA(C18:D18)" data-desc="Costo total anual con lote Q=120">$1,170.00</td>
+          </tr>
+          <tr class="optimal-excel-row">
+            <td class="row-header">19</td>
+            <td></td>
+            <td class="td-center"><b>180 latas (Q*)</b></td>
+            <td class="td-center selectable-cell" data-cell="C19" data-formula="=$C$10*($C$8/B19)" data-desc="Equilibrio exacto: Costo de ordenar = $540.00"><b>$540.00</b></td>
+            <td class="td-center selectable-cell" data-cell="D19" data-formula="=$C$11*(B19/2)" data-desc="Equilibrio exacto: Costo de mantener = $540.00"><b>$540.00</b></td>
+            <td class="td-center selectable-cell" data-cell="E19" data-formula="=SUMA(C19:D19)" data-desc="Costo Total Mínimo Anual (CT* = $1,080.00)"><b>$1,080.00 (Mínimo)</b></td>
+          </tr>
+          <tr>
+            <td class="row-header">20</td>
+            <td></td>
+            <td class="td-center">240 latas</td>
+            <td class="td-center selectable-cell" data-cell="C20" data-formula="=$C$10*($C$8/B20)" data-desc="Costo de ordenar con lote Q=240">$405.00</td>
+            <td class="td-center selectable-cell" data-cell="D20" data-formula="=$C$11*(B20/2)" data-desc="Costo de conservación con lote Q=240">$720.00</td>
+            <td class="td-center selectable-cell" data-cell="E20" data-formula="=SUMA(C20:D20)" data-desc="Costo total anual con lote Q=240">$1,125.00</td>
+          </tr>
+          <tr>
+            <td class="row-header">21</td>
+            <td></td>
+            <td class="td-center">300 latas</td>
+            <td class="td-center selectable-cell" data-cell="C21" data-formula="=$C$10*($C$8/B21)" data-desc="Costo de ordenar con lote Q=300">$324.00</td>
+            <td class="td-center selectable-cell" data-cell="D21" data-formula="=$C$11*(B21/2)" data-desc="Costo de conservación con lote Q=300">$900.00</td>
+            <td class="td-center selectable-cell" data-cell="E21" data-formula="=SUMA(C21:D21)" data-desc="Costo total anual con lote Q=300">$1,224.00</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 5. ÁREA DE HOJA2: MODELO DE CEP CON FALTANTES / DESBALANCE (GRUPO Q - VEHÍCULOS) -->
+    <div id="sheet-tema2" class="spreadsheet-viewport hidden-sheet">
+      <table class="excel-grid">
+        <thead>
+          <tr>
+            <th class="corner-header">◢</th>
+            <th class="col-a">A</th>
+            <th class="col-b">B</th>
+            <th class="col-c">C</th>
+            <th class="col-d">D</th>
+            <th class="col-e">E</th>
+            <th class="col-f">F</th>
+            <th class="col-g">G</th>
+            <th class="col-h">H</th>
+            <th class="col-i">I</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="row-header">1</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td class="row-header">2</td>
+            <td></td>
+            <td colspan="8" class="cell-banner-title selectable-cell" data-cell="B2" data-formula="PROYECTO INVESTIGACIÓN DE OPERACIONES - MODELO DE CEP CON FALTANTES (50%)" data-desc="Título general Hoja 2 en Excel">
+              <div class="banner-flex">
+                <div>
+                  <span class="badge-excel">PLANTILLA DE MODELADO MATEMÁTICO</span>
+                  <h1>MODELO DE CEP CON FALTANTES / DESBALANCE (BACKORDERS) — GRUPO Q (VEHÍCULOS)</h1>
+                </div>
+                <div class="banner-logos">
+                  <div class="logo-card" title="Grupo Q Automotriz">
+                    <img src="q.png" alt="Logo Grupo Q">
+                  </div>
+                  <div class="product-card" title="SUV / Pickup de Alta Demanda">
+                    <svg viewBox="0 0 100 40" width="80" height="32" xmlns="http://www.w3.org/2000/svg">
+                      <rect x="10" y="12" width="80" height="20" rx="4" fill="#107C41"/>
+                      <text x="50" y="27" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF" text-anchor="middle">SUV / PICKUP</text>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="row-header">3</td>
+            <td></td>
+            <td class="cell-label-merged">Perfil Corporativo:</td>
+            <td colspan="7" class="cell-text-block selectable-cell" data-cell="C3" data-formula="Caso de estudio Grupo Q - Importación de vehículos con faltantes permitidos" data-desc="Contexto de inventario con escasez planeada">
+              <strong>Grupo Q</strong> es una corporación líder en la distribución de vehículos automotrices en Centroamérica. En este modelo de <strong>CEP con Faltantes (Desbalance / Escasez)</strong>, cuando la demanda supera el stock disponible en piso de ventas, se admiten pedidos pendientes (backorders) por parte de los clientes esperando la próxima importación marítima, incurriendo en un costo de penalización por retraso (<strong>Cs</strong>).
+            </td>
+          </tr>
+          <tr>
+            <td class="row-header">4</td>
+            <td></td>
+            <td class="cell-label-merged">Enunciado del Problema:</td>
+            <td colspan="7" class="cell-statement-block selectable-cell" data-cell="C4" data-formula="Enunciado formal del modelo de faltantes para Grupo Q" data-desc="Planteamiento formal del problema de vehículos">
+              Un distribuidor autorizado comercializa vehículos utilitarios con una demanda constante de <strong>1,200 unidades/año</strong>. Cada pedido de importación genera un costo administrativo y logístico de <strong>$10,000.00 USD (Co)</strong>. El costo de compra unitario es de <strong>$25,000.00 USD</strong> y el costo de conservación anual (<strong>Cc</strong>) es el <strong>25% del valor ($6,250.00 USD/unidad/año)</strong>. Si el costo por faltantes o escasez admitida (<strong>Cs</strong>) es de <strong>$15,000.00 USD/unidad/año</strong>, <strong>determine:</strong> <em>1) Cantidad óptima a ordenar (Q), 2) Máximo nivel de inventario (Imax), 3) Cantidad faltante permitida (S), 4) Número de órdenes por año (N), y 5) Costo total mínimo anual (Ct).</em>
+            </td>
+          </tr>
+          <tr>
+            <td class="row-header">5</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td class="row-header">6</td>
+            <td></td>
+            <td colspan="4" class="section-header-dark">1. VARIABLES DE ENTRADA (CEP CON FALTANTES)</td>
+            <td colspan="4" class="section-header-green">2. RESULTADOS DEMOSTRADOS EN EXCEL (FÓRMULAS DE FALTANTES)</td>
+          </tr>
+          <tr>
+            <td class="row-header">7</td>
+            <td></td>
+            <td class="th-cell">Variable / Parámetro (Símbolo)</td>
+            <td class="th-cell center">Valor (Celda)</td>
+            <td class="th-cell">Unidad de Medida</td>
+            <td class="th-cell">Justificación Logística / Fuente</td>
+            <td class="th-cell">Interrogante a Resolver</td>
+            <td class="th-cell center">Resultado</td>
+            <td class="th-cell">Fórmula en Excel</td>
+            <td class="th-cell">Fórmula Matemática</td>
+          </tr>
+          <tr>
+            <td class="row-header">8</td>
+            <td></td>
+            <td class="td-label">Demanda Anual (<b>D</b>)</td>
+            <td class="td-input selectable-cell" data-cell="C8" data-formula="1200" data-desc="Demanda anual constante de vehículos: 1,200 unidades">1,200</td>
+            <td class="td-unit">unidades / año</td>
+            <td class="td-source">Proyección de ventas corporativas anuales Grupo Q</td>
+            <td class="td-label"><b>1. Lote Óptimo de Pedido (Q)</b></td>
+            <td class="td-output selected-cell selectable-cell" data-cell="G8" data-formula="=RAIZ((2*C10*C8*(C11+C12))/(C11*C12))" data-desc="Cantidad óptima a ordenar con faltantes: 76 unidades">76</td>
+            <td class="td-formula-code">=RAIZ((2*C10*C8*(C11+C12))/(C11*C12))</td>
+            <td class="td-math">$$Q = \sqrt{\frac{2 C_o D (C_s + C_c)}{C_s C_c}}$$</td>
+          </tr>
+          <tr>
+            <td class="row-header">9</td>
+            <td></td>
+            <td class="td-label">Costo Unitario de Compra (<b>P</b>)</td>
+            <td class="td-input selectable-cell" data-cell="C9" data-formula="25000" data-desc="Costo comercial unitario del vehículo: $25,000 USD">$25,000.00</td>
+            <td class="td-unit">USD / vehículo</td>
+            <td class="td-source">Factura promedio de importación automotriz</td>
+            <td class="td-label"><b>2. Máximo Inventario (Imax)</b></td>
+            <td class="td-output selectable-cell" data-cell="G9" data-formula="=RAIZ((2*C10*C8*C12)/(C11*(C11+C12)))" data-desc="Nivel máximo de inventario al recibir el lote: 54 unidades">54</td>
+            <td class="td-formula-code">=RAIZ((2*C10*C8*C12)/(C11*(C11+C12)))</td>
+            <td class="td-math">$$I_{max} = \sqrt{\frac{2 \cdot C_o \cdot D \cdot C_s}{C_c \cdot (C_s + C_c)}}$$</td>
+          </tr>
+          <tr>
+            <td class="row-header">10</td>
+            <td></td>
+            <td class="td-label">Costo de Ordenar (<b>Co</b>)</td>
+            <td class="td-input selectable-cell" data-cell="C10" data-formula="10000" data-desc="Costo fijo por orden de importación: $10,000 USD">$10,000.00</td>
+            <td class="td-unit">USD / orden</td>
+            <td class="td-source">Fletes marítimos y trámites aduanales puerto</td>
+            <td class="td-label"><b>3. Escasez / Faltantes (S)</b></td>
+            <td class="td-output selectable-cell" data-cell="G10" data-formula="=(G8*C11)/(C11+C12)" data-desc="Unidades máximas en lista de espera (faltantes): 22 unidades">22</td>
+            <td class="td-formula-code">=(G8*C11)/(C11+C12)</td>
+            <td class="td-math">$$S = \frac{Q \cdot C_c}{C_s + C_c}$$</td>
+          </tr>
+          <tr>
+            <td class="row-header">11</td>
+            <td></td>
+            <td class="td-label">Costo de Conservación (<b>Cc</b>)</td>
+            <td class="td-input selectable-cell" data-cell="C11" data-formula="=C9*0.25" data-desc="25% anual sobre costo unitario ($25,000 * 25% = $6,250)">$6,250.00</td>
+            <td class="td-unit">USD / unid / año</td>
+            <td class="td-source">Seguros de predio y costo financiero (25%)</td>
+            <td class="td-label"><b>4. Órdenes por Año (N)</b></td>
+            <td class="td-output selectable-cell" data-cell="G11" data-formula="=C8/G8" data-desc="Número de embarques al año: 1,200 / 76 = 15.79 órdenes">15.8 órdenes</td>
+            <td class="td-formula-code">=C8/G8</td>
+            <td class="td-math">$$N = \frac{D}{Q}$$</td>
+          </tr>
+          <tr>
+            <td class="row-header">12</td>
+            <td></td>
+            <td class="td-label">Costo por Faltantes (<b>Cs</b>)</td>
+            <td class="td-input selectable-cell" data-cell="C12" data-formula="15000" data-desc="Penalización anual por unidad en espera: $15,000 USD">$15,000.00</td>
+            <td class="td-unit">USD / unid / año</td>
+            <td class="td-source">Costo de retraso y gestión de backorders</td>
+            <td class="td-label"><b>5. Costo Total Mínimo (Ct)</b></td>
+            <td class="td-output highlight-total selectable-cell" data-cell="G12" data-formula="=RAIZ(2*C10*C11*C8)*RAIZ(C12/(C12+C11))" data-desc="Costo total anual mínimo con faltantes">$316,227.77</td>
+            <td class="td-formula-code">=RAIZ(2*C10*C11*C8)*RAIZ(C12/(C12+C11))</td>
+            <td class="td-math">$$Ct = \sqrt{2 C_o C_c D} \cdot \sqrt{\frac{C_s}{C_s + C_c}}$$</td>
+          </tr>
+          <tr>
+            <td class="row-header">13</td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td class="td-label"><b>Unidades Disponibles (Imax_s)</b></td>
+            <td class="td-output selectable-cell" data-cell="G13" data-formula="=G8-G10" data-desc="Inventario neto tras despachar faltantes: 54 unidades">54 unid.</td>
+            <td class="td-formula-code">=G8-G10</td>
+            <td class="td-math">$$Imax_s = Q - S$$</td>
+          </tr>
+          <tr>
+            <td class="row-header">14</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td class="row-header">15</td>
+            <td></td>
+            <td colspan="4" class="section-header-dark">3. ANÁLISIS DE SENSIBILIDAD (MODELO CON FALTANTES)</td>
+            <td colspan="4" class="section-header-green">4. GRÁFICO DE DINÁMICA DE INVENTARIO CON FALTANTES</td>
+          </tr>
+          <tr>
+            <td class="row-header">16</td>
+            <td></td>
+            <td class="th-cell center">Lote (Q)</td>
+            <td class="th-cell center">Costo Ordenar</td>
+            <td class="th-cell center">Costo Mantener</td>
+            <td class="th-cell center">Costo Faltantes (Cs)</td>
+            <td colspan="4" rowspan="6" class="chart-host-cell">
+              <div class="excel-chart-object">
+                <div class="chart-handle tl"></div>
+                <div class="chart-handle tr"></div>
+                <div class="chart-handle bl"></div>
+                <div class="chart-handle br"></div>
+                <div class="excel-chart-header">
+                  <strong>Gráfico 2: Comportamiento de Inventario con Faltantes (Grupo Q)</strong>
+                  <span>Óptimo: Q = 76 | S = 22 | Imax = 54</span>
+                </div>
+                <canvas id="excelFaltantesCanvas" height="175"></canvas>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="row-header">17</td>
+            <td></td>
+            <td class="td-center">40 unidades</td>
+            <td class="td-center">$300,000.00</td>
+            <td class="td-center">$87,500.00</td>
+            <td class="td-center">$412,500.00</td>
+          </tr>
+          <tr>
+            <td class="row-header">18</td>
+            <td></td>
+            <td class="td-center">60 unidades</td>
+            <td class="td-center">$200,000.00</td>
+            <td class="td-center">$131,250.00</td>
+            <td class="td-center">$345,250.00</td>
+          </tr>
+          <tr class="optimal-excel-row">
+            <td class="row-header">19</td>
+            <td></td>
+            <td class="td-center"><b>76 unidades (Q*)</b></td>
+            <td class="td-center"><b>$157,894.74</b></td>
+            <td class="td-center"><b>$79,210.53</b></td>
+            <td class="td-center"><b>$316,227.77 (Mínimo)</b></td>
+          </tr>
+          <tr>
+            <td class="row-header">20</td>
+            <td></td>
+            <td class="td-center">100 unidades</td>
+            <td class="td-center">$120,000.00</td>
+            <td class="td-center">$218,750.00</td>
+            <td class="td-center">$338,750.00</td>
+          </tr>
+          <tr>
+            <td class="row-header">21</td>
+            <td></td>
+            <td class="td-center">120 unidades</td>
+            <td class="td-center">$100,000.00</td>
+            <td class="td-center">$281,250.00</td>
+            <td class="td-center">$381,250.00</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 5. ÁREA DE HOJA2 PLACEHOLDER (YA SUSTITUIDA POR LA TABLA DE FALTANTES) -->
+    <div id="sheet-tema2" class="spreadsheet-viewport hidden-sheet">
+      <!-- Contenido renderizado arriba en la tabla de la hoja 2 -->
+    </div>
+
+    <!-- 6. BARRA INFERIOR DE PESTAÑAS DE HOJAS (SHEET TABS) Y ESTADO -->
+    <footer class="excel-statusbar">
+      <div class="sheet-tabs-container">
+        <span class="sheet-nav-arrows">◄ ►</span>
+        <button class="sheet-tab active" data-sheet="sheet-cep">
+          📊 CEP CLASICO NESTLE
+        </button>
+        <button class="sheet-tab" data-sheet="sheet-tema2">
+          📈 CEP-DESBALANCE
+        </button>
+        <span class="add-sheet-btn" title="Hoja nueva">⊕</span>
+      </div>
+
+      <div class="status-metrics">
+        <span>LISTO</span>
+        <span>Promedio: <b id="statusAverage">$540.00</b></span>
+        <span>Recuento: <b>6</b></span>
+        <span>Suma CT*: <b id="statusSum">$1,080.00 USD</b></span>
+        <span>🔍 100%</span>
+      </div>
+
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
